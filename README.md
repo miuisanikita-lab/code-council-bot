@@ -133,6 +133,48 @@ Bot:
 | Mistral | [console.mistral.ai](https://console.mistral.ai) | Bepul tier bor |
 | Together | [api.together.xyz](https://api.together.xyz) | Arzon |
 
+## Render.com ga deploy
+
+### 1. GitHub'ga push qiling
+```bash
+git init
+git add -A
+git commit -m "initial commit"
+git remote add origin https://github.com/YOUR_USERNAME/code-council-bot.git
+git push -u origin master
+```
+
+### 2. Render.com da Worker yarating
+1. [render.com](https://render.com) ga boring → GitHub bilan login
+2. **"New +"** → **"Background Worker"** tanlang
+3. GitHub reponi ulang: `code-council-bot`
+4. Sozlamalar:
+   - **Name:** `code-council-bot`
+   - **Runtime:** `Python 3`
+   - **Build Command:** `pip install -r requirements.txt`
+   - **Start Command:** `python main.py`
+5. **"Create Background Worker"** bosing
+
+### 3. Environment Variables qo'shing
+Render dashboard → sizning worker → **"Environment"** bo'limi:
+
+| Key | Value |
+|-----|-------|
+| `TELEGRAM_BOT_TOKEN` | @BotFather dan olingan token |
+| `GROQ_API_KEY` | [console.groq.com](https://console.groq.com) dan bepul oling |
+
+Qo'shimcha API kalitlari (ixtiyoriy):
+| Key | Value |
+|-----|-------|
+| `OPENROUTER_API_KEY` | 9 ta agent faollashadi |
+| `OPENAI_API_KEY` | GPT-4o agentlari uchun |
+| `ANTHROPIC_API_KEY` | Claude agentlari uchun |
+
+### 4. Deploy
+"Manual Deploy" → "Deploy latest commit" bosing. Bot 1-2 daqiqada ishga tushadi!
+
+> **Muhim:** Render **Free tier** da worker 15 daqiqadan keyin uxlaydi. Doim ishlashi uchun **Starter plan** ($7/oy) tanlang.
+
 ## Texnologiyalar
 
 - Python 3.11+
